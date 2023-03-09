@@ -5,86 +5,75 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.assertEquals;
-
 import java.time.Duration;
-
 public class HomePage {
     private WebDriver driver;
     public HomePage(WebDriver driver){
         this.driver=driver;
     }
-    public By scrollQuestions=By.id ("accordion__heading-0");
-    public By scrollQuestions1=By.id ("accordion__heading-1");
-    public By scrollQuestions2=By.id ("accordion__heading-2");
-    public By scrollQuestions3=By.id ("accordion__heading-3");
-    public By scrollQuestions4=By.id ("accordion__heading-4");
-    public By scrollQuestions5=By.id ("accordion__heading-5");
-    public By scrollQuestions6=By.id ("accordion__heading-6");
-    public By scrollQuestions7=By.id ("accordion__heading-7");
-
+    private By scrollQuestions=By.id ("accordion__heading-0");
+    private By scrollQuestions1=By.id ("accordion__heading-1");
+    private By scrollQuestions2=By.id ("accordion__heading-2");
+    private By scrollQuestions3=By.id ("accordion__heading-3");
+    private By scrollQuestions4=By.id ("accordion__heading-4");
+    private By scrollQuestions5=By.id ("accordion__heading-5");
+    private By scrollQuestions6=By.id ("accordion__heading-6");
+    private By scrollQuestions7=By.id ("accordion__heading-7");
+    private By openText = By.xpath("//div[@aria-expanded='true']/parent :: div/parent::div/div[@class='accordion__panel']/p");
     public final By cookieButton= By.xpath(".//button[@class='App_CookieButton__3cvqF']");
-
     public void waitForLoad(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.id("accordion__heading-0")));
     }
     public void testAccordion0() {
-        WebElement textOne = driver.findElement(scrollQuestions);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions);
         waitForLoad();
-        assertEquals("Сутки — 400 рублей. Оплата курьеру — наличными или картой.",driver.findElement(By.id ("accordion__panel-0")).getText());
+        assertEquals("Сутки — 400 рублей. Оплата курьеру — наличными или картой.",getAccordionText(openText));
     }
     public void testAccordion1() {
-        WebElement textOne = driver.findElement(scrollQuestions1);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions1);
         waitForLoad();
-        assertEquals("Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.",driver.findElement(By.id ("accordion__panel-1")).getText());
+        assertEquals("Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.",getAccordionText(openText));
     }
     public void testAccordion2() {
-        WebElement textOne = driver.findElement(scrollQuestions2);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions2);
         waitForLoad();
-        assertEquals("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.",driver.findElement(By.id ("accordion__panel-2")).getText());
+        assertEquals("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.",getAccordionText(openText));
     }
     public void testAccordion3() {
-        WebElement textOne = driver.findElement(scrollQuestions3);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions3);
         waitForLoad();
-        assertEquals("Только начиная с завтрашнего дня. Но скоро станем расторопнее.",driver.findElement(By.id ("accordion__panel-3")).getText());
+        assertEquals("Только начиная с завтрашнего дня. Но скоро станем расторопнее.",getAccordionText(openText));
     }
     public void testAccordion4() {
-        WebElement textOne = driver.findElement(scrollQuestions4);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions4);
         waitForLoad();
-        assertEquals("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.",driver.findElement(By.id ("accordion__panel-4")).getText());
+        assertEquals("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.",getAccordionText(openText));
     }
     public void testAccordion5() {
-        WebElement textOne = driver.findElement(scrollQuestions5);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions5);
         waitForLoad();
-        assertEquals("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.",driver.findElement(By.id ("accordion__panel-5")).getText());
+        assertEquals("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.",getAccordionText(openText));
     }
     public void testAccordion6() {
-        WebElement textOne = driver.findElement(scrollQuestions6);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions6);
         waitForLoad();
-        assertEquals("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.",driver.findElement(By.id ("accordion__panel-6")).getText());
+        assertEquals("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.",getAccordionText(openText));
     }
     public void testAccordion7() {
-        WebElement textOne = driver.findElement(scrollQuestions7);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
-        textOne.click();
+        scrolToQuestion(scrollQuestions7);
         waitForLoad();
-        assertEquals("Да, обязательно. Всем самокатов! И Москве, и Московской области.",driver.findElement(By.id ("accordion__panel-7")).getText());
+        assertEquals("Да, обязательно. Всем самокатов! И Москве, и Московской области.", getAccordionText(openText));
     }
     public void testCookieButton(){
         driver.findElement(cookieButton).click();
+    }
+    public void scrolToQuestion(By scrollQuestion) {
+        WebElement textOne = driver.findElement(scrollQuestion);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", textOne);
+        textOne.click();
+    }
+    public String getAccordionText(By accordionPanel) {
+        return driver.findElement(accordionPanel).getText();
     }
 }
 

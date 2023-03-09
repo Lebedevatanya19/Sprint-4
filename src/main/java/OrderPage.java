@@ -14,15 +14,15 @@ public class OrderPage {
 
     private final By buttonOrderUp = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[@class='Button_Button__ra12g']");
     private By lowerOrderButton = By.className("Button_Middle__1CSJM");
-    private final By nameField = By.xpath("/html/body/div/div/div[2]/div[2]/div[1]/input");
-    private final By surNameField = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[2]/input");
-    private final By addressField = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[3]/input");
+    private final By nameField = By.xpath("//input[@placeholder='* Имя']");
+    private final By surNameField = By.xpath("//input[@placeholder='* Фамилия']");
+    private final By addressField = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
     private final By metroField = By.xpath(".//input[@placeholder='* Станция метро']");
-    private final By phoneField = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[5]/input");
+    private final By phoneField = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
     //Локаторы для 1 й страницы
     private final By buttonNext =  By.xpath("//div/div[2]/div[3]/button");
-    private final By dateField = By.xpath(".//div/div[2]/div[2]/div[1]/div/div/input");
-    private final By periodField = By.xpath("//div/div[2]/div[2]/div[2]/div");
+    private final By dateField = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
+    private final By periodField = By.xpath("//div/div[2]/div[2]/div[2]/div"); //*[@id="root"]/div/div[2]/div[2]/div[2]/div/div[1]
     private final By isBlackCheckbox = By.xpath(".//input[@id='black']");
     private final By isGreyCheckbox = By.xpath("//input[@id='grey']");
     private final By commentField = By.xpath(".//input[@placeholder='Комментарий для курьера']");
@@ -41,7 +41,6 @@ public class OrderPage {
             clickOrderButtonDown();
         }
     }
-
     public void fillName(String name){
         driver.findElement(nameField).sendKeys(name);
     }
@@ -69,20 +68,17 @@ public class OrderPage {
         fillMetroField(metro);
         fillPhone(phone);
     }
-
     public void clickOrderButtonDown(){
         WebElement element = driver.findElement(lowerOrderButton);
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
         element.click();
     }
     private By cookiesButton = By.xpath(".//button[@class='App_CookieButton__3cvqF']");
-
     public void clickSignInButton() {
         driver.findElement(cookiesButton).click();
     }
     public void clickButtonNext(){
         driver.findElement(buttonNext).click();
-
     }
     public void dataFill(){
         driver.findElement(dateField).click();
@@ -90,7 +86,6 @@ public class OrderPage {
     public void periodFill(){
         driver.findElement(periodField).click();
         driver.findElement(By.xpath("//div/div[2]/div[2]/div[2]/div[2]/div[1]")).click();
-
     }
     public void clickBox( ){
         driver.findElement(isBlackCheckbox).click();
@@ -104,7 +99,7 @@ public class OrderPage {
     public void willIssue(){
         driver.findElement(By.xpath("//div/div[2]/div[5]/div[2]/button[2]")).click();
     }
-    //Проверка появление окна Заказ оформлен
+    //Провека появление окна Заказ оформлен
     public void checkOrderStatusCompleted(){
         assertEquals("Заказ оформлен Номер заказа: .  Запишите его: пригодится, чтобы отслеживать статус",getResultMessage());
     }

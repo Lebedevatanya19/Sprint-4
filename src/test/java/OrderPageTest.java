@@ -18,7 +18,6 @@ public class OrderPageTest {
     }
 
     @Test
-
     public void testOrderUp() {
         OrderPage objOrderPage = new OrderPage(driver);
         objOrderPage. clickSignInButton();
@@ -30,7 +29,6 @@ public class OrderPageTest {
         objOrderPage.checkOrderStatusCompleted();//Метод отображение результата "Заказ сделан"
     }
     @Test
-
     public void testOrderDown() {
         OrderPage objOrderPage = new OrderPage(driver);
         objOrderPage. clickSignInButton();
